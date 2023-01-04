@@ -1,4 +1,13 @@
-package.path = package.path..';/Users/huangqi/prj/GitHub/nvims/?.lua'
+package.path = package.path..';/home/ryanhunter/GitHub/nvims/?.lua'
 print("test autocmd")
-local ac = require('common/autocmd')
-ac.subscribe("TextChaned",)
+-- vim.o.completeopt='menu,menuone,noinsert'
+-- local ac = require('common/autocmd')
+-- local onTextChanged = function()
+-- 	local offset = 3
+-- 	local items = {'one','tow'}
+-- 	vim.fn.complete(offset,items)
+-- end
+-- ac.subscribe("TextChangedI",onTextChanged)
+
+-- require('auc.init')
+require('sv.init')
