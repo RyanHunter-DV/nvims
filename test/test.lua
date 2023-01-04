@@ -10,4 +10,5 @@ print("test autocmd")
 -- ac.subscribe("TextChangedI",onTextChanged)
 
 -- require('auc.init')
-require('sv.init')
+-- require('sv.init')
+require('rac.init')
