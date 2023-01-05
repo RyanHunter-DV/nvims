@@ -4,8 +4,8 @@ local driver = {}
 
 driver.classblock = function(self,cn)
 	local cnts = {}
-	table.insert(cnts,'class ' .. cn .. ' #(type REQ=uvm_sequence_item,RSP=REQ) extends uvm_driver#(REQ,RSP);')
-	table.insert(cnts,'\t`uvm_component_utils('..cn..')')
+	table.insert(cnts,'class '..cn..' #(type REQ=uvm_sequence_item,RSP=REQ) extends uvm_driver#(REQ,RSP);')
+	table.insert(cnts,'\t`uvm_component_utils('..cn..'#(REQ,RSP))')
 	-- table.insert(cnts,comp:utils(cn))
 	-- table.insert(cnts,comp:new(cn))
 	-- table.insert(cnts,comp:phases(cn))
@@ -28,6 +28,11 @@ driver.classblock = function(self,cn)
 		table.insert(cnts,v)
 	end
 	table.insert(cnts,'endclass')
+	table.insert(cnts,'')
+	table.insert(cnts,'')
+	table.insert(cnts,'//-----------------------CLASS BODY-----------------------//')
+	table.insert(cnts,'')
+
 	for _,v in ipairs(build.body) do
 		table.insert(cnts,v)
 	end

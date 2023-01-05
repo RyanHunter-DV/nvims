@@ -12,3 +12,4 @@ vim.cmd ([[au BufRead,BufNewFile *.rh set filetype=ruby]])
 vim.cmd ([[au FileType ruby setlocal shiftwidth=4 ]])
 vim.cmd ([[au FileType * setlocal fo-=o ]])
 vim.cmd ([[au BufRead,BufNewFile *.svh set filetype=systemverilog]])
+

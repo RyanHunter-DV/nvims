@@ -26,3 +26,6 @@ vim.api.nvim_create_user_command('Package',function(args)
 	sv.pg:createPackage(args.args)
 	end,{force=true,nargs=1}
 )
+
+-- for comments
+-- vim.api.nvim_set_keymap('i','s//','')
