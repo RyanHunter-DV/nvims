@@ -89,8 +89,11 @@ return require('packer').startup(function(use)
 	}
 
 	-- @RyanH, add nord theme
-	-- TODO,
+	use 'shaunsingh/nord.nvim'
 
 	-- @RyanH, add nvim-tree
 	-- TODO
+	use {'kyazdani42/nvim-tree.lua',requires = 'kyazdani42/nvim-web-devicons'}
+	-- @RyanH,bufferline
+	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 end)

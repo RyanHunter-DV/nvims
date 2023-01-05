@@ -1,3 +1,3 @@
-require('basic')
-require('plugin')
-require('plugin-config')
+require('init.basic')
+require('init.plugin')
+require('init.plugin-config')
