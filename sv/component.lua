@@ -1,5 +1,5 @@
 local tf=require('sv.method')
-local debug=require('common.debug')
+-- local debug=require('common.debug')
 local component={}
 
 component.getTfType = function(self,n)

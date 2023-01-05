@@ -6,6 +6,9 @@ vim.o.incsearch   = true
 vim.o.hlsearch    = true
 vim.o.cindent     = true
 
-vim.cmd [[au BufRead,BufNewFile *.rh set filetype=ruby]]
-vim.cmd([[au FileType ruby setlocal shiftwidth=4 ]])
-vim.cmd [[au BufRead,BufNewFile *.svh set filetype=systemverilog]]
+vim.cmd ([[ set foldmethod=marker ]])
+vim.cmd ([[ set foldmarker=##{{{,##}}} ]])
+vim.cmd ([[au BufRead,BufNewFile *.rh set filetype=ruby]])
+vim.cmd ([[au FileType ruby setlocal shiftwidth=4 ]])
+vim.cmd ([[au FileType * setlocal fo-=o ]])
+vim.cmd ([[au BufRead,BufNewFile *.svh set filetype=systemverilog]])

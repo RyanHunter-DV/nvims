@@ -1,4 +1,4 @@
-local debug = require('common.debug')
+--local debug = require('common.debug')
 local fileop = {}
 
 fileop.createFileHeader = function(self)
