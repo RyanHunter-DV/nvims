@@ -2,7 +2,7 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -33,10 +33,10 @@ return require('packer').startup(function(use)
   }
 
   -- Plugins can also depend on rocks from luarocks.org:
-  use {
-    'my/supercoolplugin',
-    rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
-  }
+  -- use {
+  --   'my/supercoolplugin',
+  --   rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
+  -- }
 
   -- You can specify rocks in isolation
   use_rocks 'penlight'
@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
   -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Post-install/update hook with call of vimscript function with argument
   use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
@@ -80,7 +80,7 @@ return require('packer').startup(function(use)
 	use "hrsh7th/cmp-cmdline"
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/cmp-nvim-lua"
-	use "saadparwaiz1/cmp-luasnip"
+	-- use "saadparwaiz1/cmp-luasnip"
 	use "f3fora/cmp-spell"
 	use {
 		"tzachar/cmp-tabnine",
@@ -101,4 +101,14 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-end)
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+end,
+config = {
+	git = {
+		default_url_format = "git@github.com:%s",
+	},
+},
+})
