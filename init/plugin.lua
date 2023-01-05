@@ -49,16 +49,18 @@ return require('packer').startup({function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
   -- Post-install/update hook with neovim command
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Post-install/update hook with call of vimscript function with argument
   use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
+  -- You can specify multiple plugins in a single call
+  use {'tjdevries/colorbuddy.vim'}
   -- Use specific branch, dependency and run lua file after load
-  use {
-    'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  -- use {
+  --   'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
+  --   requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
 
   -- Use dependency and run lua function after load
   use {
@@ -66,8 +68,6 @@ return require('packer').startup({function(use)
     config = function() require('gitsigns').setup() end
   }
 
-  -- You can specify multiple plugins in a single call
-  use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
 
   -- You can alias plugin names
   use {'dracula/vim', as = 'dracula'}
