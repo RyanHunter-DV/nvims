@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
   use_rocks {'lua-resty-http', 'lpeg'}
 
   -- Local plugins can be included
-  use '~/projects/personal/hover.nvim'
+  -- use '~/projects/personal/hover.nvim'
 
   -- Plugins can have post-install/update hooks
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
@@ -96,4 +96,9 @@ return require('packer').startup(function(use)
 	use {'kyazdani42/nvim-tree.lua',requires = 'kyazdani42/nvim-web-devicons'}
 	-- @RyanH,bufferline
 	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
 end)
