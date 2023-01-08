@@ -87,9 +87,15 @@ return require('packer').startup({function(use)
 		after = "nvim-cmp",
 		run = "bash ./install.sh"
 	}
+	use {'neovim/nvim-lspconfig','williamboman/nvim-lsp-installer'}
+	-- use {
+	-- 	'autozimu/LanguageClient-neovim',
+	-- 	run = 'bash ./install.sh'
+	-- }
 
 	-- @RyanH, add nord theme
 	use 'shaunsingh/nord.nvim'
+	use 'glepnir/zephyr-nvim'
 
 	-- @RyanH, add nvim-tree
 	-- TODO
