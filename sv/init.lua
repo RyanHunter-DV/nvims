@@ -29,3 +29,24 @@ vim.api.nvim_create_user_command('Package',function(args)
 
 -- for comments
 -- vim.api.nvim_set_keymap('i','s//','')
+-- new added from here
+sv.method = require('sv.method')
+-- call command like:
+-- :Func void funcname (input int a[$],input int b)
+vim.api.nvim_create_user_command('Func',function(args)
+	sv.method:defmethod('func',args.args)
+end,{force=true,nargs=1})
+vim.api.nvim_create_user_command('Task',function(args)
+	sv.method:defmethod('task',args.args)
+end,{force=true,nargs=1})
+vim.api.nvim_create_user_command('VFunc',function(args)
+	sv.method:virtual()
+	sv.method:defmethod('func',args.args)
+	sv.method:reset()
+end,{force=true,nargs=1})
+vim.api.nvim_create_user_command('VTask',function(args)
+	sv.method:virtual()
+	sv.method:defmethod('task',args.args)
+	sv.method:reset()
+end,{force=true,nargs=1})
+-- new added finished
