@@ -50,3 +50,7 @@ vim.api.nvim_create_user_command('VTask',function(args)
 	sv.method:reset()
 end,{force=true,nargs=1})
 -- new added finished
+uvm.obj = require('sv.object')
+vim.api.nvim_create_user_command('Object',function(args)
+	uvm.obj:classblock(args.args)
+end,{force=true,nargs=1})
