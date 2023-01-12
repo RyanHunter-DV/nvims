@@ -23,11 +23,11 @@ method.body = function(self,cn,mn,arg,t,rtn,block)
 		tf = tf..' '..rtn
 	end
 	local fullmethod = cn..'::'..mn
-	table.insert(cnts,tf..' '..fullmethod..'('..arg..');')
+	table.insert(cnts,tf..' '..fullmethod..'('..arg..'); // ##{{{')
 	for _,b in ipairs(block) do
 		table.insert(cnts,'\t'..b)
 	end
-	table.insert(cnts,'end'..t)
+	table.insert(cnts,'end'..t..'// ##}}}')
 	return cnts
 end
 -- new added here
@@ -52,11 +52,11 @@ method.newBody = function(self,cn,mn,t,rtn,block)
 		tf = tf..' '..rtn
 	end
 	local fullmethod = cn..'::'..mn
-	table.insert(cnts,tf..' '..fullmethod..';')
+	table.insert(cnts,tf..' '..fullmethod..'; // ##{{{')
 	for _,b in ipairs(block) do
 		table.insert(cnts,'\t'..b)
 	end
-	table.insert(cnts,'end'..t)
+	table.insert(cnts,'end'..t..' // ##}}}')
 	return cnts
 end
 
