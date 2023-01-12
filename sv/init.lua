@@ -6,12 +6,15 @@ local sv = {}
 local uvm= {}
 
 uvm.drv = require('sv.driver')
+uvm.agt = require('sv.agent')
 sv.fh   = require('sv.fileop')
 sv.pg   = require('sv.package')
 
 vim.api.nvim_create_user_command('Driver',function(args)
-	-- local cn = vim.api.nvim_get_current_line()
 	uvm.drv:classblock(args.args)
+end,{force=true,nargs=1})
+vim.api.nvim_create_user_command('Agent',function(args)
+	uvm.agt:classblock(args.args)
 end,{force=true,nargs=1})
 
 local fileHeaderCmd = function()

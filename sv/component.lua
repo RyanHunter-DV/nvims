@@ -35,13 +35,18 @@ end
 -- 	return cnts
 -- end
 
-component.phase = function(self,cn,pn)
+component.phase = function(self,cn,pn,exts)
 	local phase = {}
+	local cnts  = {}
 	local tftype = self.getTfType(self,pn)
 	phase.body  = {}
 	phase.proto = {}
 	table.insert(phase.proto,tf:prototype(pn..'_phase','uvm_phase phase',tftype,'void'))
-	for _,b in ipairs(tf:body(cn,pn..'_phase','uvm_phase phase',tftype,'void',{'super.'..pn..'_phase(phase);'})) do
+	table.insert(cnts,'super.'..pn..'_phase(phase);')
+	for _,ext in ipairs(exts) do
+		table.insert(cnts,ext)
+	end
+	for _,b in ipairs(tf:body(cn,pn..'_phase','uvm_phase phase',tftype,'void',cnts)) do
 		table.insert(phase.body,b)
 	end
 	return phase

@@ -15,9 +15,9 @@ driver.classblock = function(self,cn)
 	-- for _,v in ipairs(comp:phasePrototype({'build','connect','run'})) do
 	-- 	table.insert(cnts,v)
 	-- end
-	local build  = comp:phase(cn,'build')
-	local connect= comp:phase(cn,'connect')
-	local run    = comp:phase(cn,'run')
+	local build  = comp:phase(cn,'build',{})
+	local connect= comp:phase(cn,'connect',{})
+	local run    = comp:phase(cn,'run',{})
 	for _,v in ipairs(build.proto) do
 		table.insert(cnts,v)
 	end
