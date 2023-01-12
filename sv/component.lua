@@ -41,6 +41,7 @@ component.phase = function(self,cn,pn,exts)
 	local tftype = self.getTfType(self,pn)
 	phase.body  = {}
 	phase.proto = {}
+	tf:virtual()
 	table.insert(phase.proto,tf:prototype(pn..'_phase','uvm_phase phase',tftype,'void'))
 	table.insert(cnts,'super.'..pn..'_phase(phase);')
 	for _,ext in ipairs(exts) do
@@ -49,6 +50,7 @@ component.phase = function(self,cn,pn,exts)
 	for _,b in ipairs(tf:body(cn,pn..'_phase','uvm_phase phase',tftype,'void',cnts)) do
 		table.insert(phase.body,b)
 	end
+	tf:reset()
 	return phase
 end
 
