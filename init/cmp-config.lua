@@ -4,8 +4,8 @@ local cmp = require'cmp'
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
@@ -23,6 +23,22 @@ local cmp = require'cmp'
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
+	formatting = {
+		fields = {'kind','abbr','menu'},
+		format = function(entry,vim_item)
+			vim_item.kind = '-'
+			vim_item.menu = ({
+				nvim_lsp    = '[LSP]',
+				cmp_tabnine = '[Tabnine]',
+				buffer      = '[Buffer]',
+				luasnip     = '[Snippet]',
+				spell       = '[Spell]',
+				path        = '[Path]',
+				cmdline     = '[Cmdline]',
+			})[entry.source.name]
+			return vim_item
+		end
+	},
     sources = cmp.config.sources({
       { name = 'lsp' },
       { name = 'vsnip' }, -- For vsnip users.
@@ -32,6 +48,7 @@ local cmp = require'cmp'
       { name = 'path' },
       { name = 'cmdline' },
       { name = 'spell' },
+      { name = 'cmp_tabnine' },
     }, {
       { name = 'buffer' },
     })
@@ -64,9 +81,10 @@ local cmp = require'cmp'
     })
   })
 
-  -- Set up lspconfig.
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-  --   capabilities = capabilities
-  -- }
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+--   capabilities = capabilities
+-- }
+

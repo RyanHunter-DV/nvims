@@ -2,6 +2,7 @@
 -- Author: RyanHunter
 --
 
+print("rac loaded")
 local auc  = require('common.autocmd')
 local core = require('rac.core')
 local debug= require('common.debug')

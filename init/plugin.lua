@@ -80,7 +80,9 @@ return require('packer').startup({function(use)
 	use "hrsh7th/cmp-cmdline"
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/cmp-nvim-lua"
-	-- use "saadparwaiz1/cmp-luasnip"
+	use "saadparwaiz1/cmp_luasnip"
+	use "rafamadriz/friendly-snippets"
+	use "L3MON4D3/LuaSnip"
 	use "f3fora/cmp-spell"
 	use {
 		"tzachar/cmp-tabnine",

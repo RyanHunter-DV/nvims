@@ -1,0 +1,16 @@
+{
+    "require": {
+        "prefix": "req",
+        "body": [
+            "require(\"${1:module}\")"
+        ],
+        "description": "Require module"
+    }
+	"driver": {
+		"prefix": "driver",
+		"body":[
+			""
+		],
+		"description":
+	}
+}
