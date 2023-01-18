@@ -29,4 +29,4 @@ require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippets
 require("luasnip.loaders.from_vscode").load({  -- load custom code snip
 	paths = {vim.fn.stdpath("config").."/mysnips"}
 })
-require('snippets.uvm')
+require('snippets.init')
