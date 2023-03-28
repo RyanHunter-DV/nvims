@@ -14,4 +14,5 @@ vim.cmd ([[au FileType * setlocal fo-=o ]])
 vim.cmd ([[au FileType * set softtabstop=0 ]])
 vim.cmd ([[au FileType * set noexpandtab ]])
 vim.cmd ([[au BufRead,BufNewFile *.svh set filetype=systemverilog]])
+--vim.cmd ([[]])
 

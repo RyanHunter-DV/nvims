@@ -15,6 +15,7 @@ return require('packer').startup({function(use)
 
   -- Load on an autocommand event
   use {'andymass/vim-matchup', event = 'VimEnter'}
+  use {"akinsho/toggleterm.nvim", tag = '*'}
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
@@ -84,11 +85,11 @@ return require('packer').startup({function(use)
 	use "rafamadriz/friendly-snippets"
 	use "L3MON4D3/LuaSnip"
 	use "f3fora/cmp-spell"
-	use {
-		"tzachar/cmp-tabnine",
-		after = "nvim-cmp",
-		run = "bash ./install.sh"
-	}
+	-- to memory usage, use {
+	-- to memory usage, 	"tzachar/cmp-tabnine",
+	-- to memory usage, 	after = "nvim-cmp",
+	-- to memory usage, 	run = "bash ./install.sh"
+	-- to memory usage, }
 	use {'neovim/nvim-lspconfig','williamboman/nvim-lsp-installer'}
 	-- use {
 	-- 	'autozimu/LanguageClient-neovim',

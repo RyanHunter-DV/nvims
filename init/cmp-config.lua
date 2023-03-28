@@ -29,7 +29,7 @@ local cmp = require'cmp'
 			vim_item.kind = '-'
 			vim_item.menu = ({
 				nvim_lsp    = '[LSP]',
-				cmp_tabnine = '[Tabnine]',
+				-- too memory usage, cmp_tabnine = '[Tabnine]',
 				buffer      = '[Buffer]',
 				luasnip     = '[Snippet]',
 				spell       = '[Spell]',
@@ -48,7 +48,7 @@ local cmp = require'cmp'
       { name = 'path' },
       { name = 'cmdline' },
       { name = 'spell' },
-      { name = 'cmp_tabnine' },
+      -- too memory usage, { name = 'cmp_tabnine' },
     }, {
       { name = 'buffer' },
     })

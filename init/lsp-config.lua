@@ -8,8 +8,8 @@ require("nvim-lsp-installer").setup({
         }
     }
 })
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.solargraph.setup{}
+-- require'lspconfig'.pyright.setup{}
+-- require'lspconfig'.solargraph.setup{}
 -- require'lspconfig'.sorbet.setup{}
 -- require'lspconfig'.svlangserver.setup{}
 -- nvim-lsp-installer/servers/solargraph/init.lua
