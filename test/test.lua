@@ -1,5 +1,5 @@
 package.path = package.path..';/home/ryanhunter/GitHub/nvims/?.lua'
-print("test autocmd")
+print("test starts")
 -- vim.o.completeopt='menu,menuone,noinsert'
 -- local ac = require('common/autocmd')
 -- local onTextChanged = function()
@@ -11,4 +11,12 @@ print("test autocmd")
 
 -- require('auc.init')
 -- require('sv.init')
-require('rac.init')
+w = require('Rhcmp.window')
+c = require('Rhcmp.context')
+w.setupCompletionWindow();
+c.setup(w);
+t={
+	textinfo='souruce0',
+	textinfo1='source1'
+};
+c.fillSources('suggestion',t);
