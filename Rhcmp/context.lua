@@ -51,9 +51,9 @@ end
 
 s.format = function(purpose,ctx,src,len)
 	local f='';
-	len=len-2; -- shall reduce the len of the heading flag
+	len=len-3; -- shall reduce the len of the heading flag
 	if purpose == 'suggestion' then
-		sstart = len-string.len(src)-2;
+		sstart = len-string.len(src)-2-1;
 		f = '- '..ctx;
 		for i=1,len-2-string.len(ctx..src) do
 			f = f..' ';
