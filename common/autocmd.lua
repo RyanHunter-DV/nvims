@@ -1,37 +1,41 @@
-local debug = require('common.debug')
+-- local debug = require('common.debug')
 
 local autocmd = {}
 
-autocmd.group = vim.api.nvim_create_augroup('___cmp___', { clear = true })
+autocmd.new = function(groupname)
+	local self=setmetatable({},{__index = autocmd});
+	self.group = vim.api.nvim_create_augroup(groupname, { clear = true })
+	self.events = {};
+	return self;
+end
 
-autocmd.events = {}
 
 ---Subscribe autocmd
 ---@param events string|string[]
 ---@param callback function
 ---@return function
-autocmd.subscribe = function(events, callback)
+autocmd.subscribe = function(self,events, callback)
   events = type(events) == 'string' and { events } or events
 
   for _, event in ipairs(events) do
-    if not autocmd.events[event] then
-      autocmd.events[event] = {}
+    if not self.events[event] then
+      self.events[event] = {}
       vim.api.nvim_create_autocmd(event, {
         desc = ('nvim-cmp: autocmd: %s'):format(event),
-        group = autocmd.group,
+        group = self.group,
         callback = function()
-          autocmd.emit(event)
+          self:emit(event)
         end,
       })
     end
-    table.insert(autocmd.events[event], callback)
+    table.insert(self.events[event], callback)
   end
 
   return function()
     for _, event in ipairs(events) do
-      for i, callback_ in ipairs(autocmd.events[event]) do
+      for i, callback_ in ipairs(self.events[event]) do
         if callback_ == callback then
-          table.remove(autocmd.events[event], i)
+          table.remove(self.events[event], i)
           break
         end
       end
@@ -41,13 +45,12 @@ end
 
 ---Emit autocmd
 ---@param event string
-autocmd.emit = function(event)
-	debug.log(' ')
-	debug.log(string.format('>>> %s', event))
-  autocmd.events[event] = autocmd.events[event] or {}
-  for _, callback in ipairs(autocmd.events[event]) do
-    callback()
-  end
+autocmd.emit = function(self,event)
+	self.events[event] = self.events[event] or {}
+	for _, callback in ipairs(self.events[event]) do
+		callback()
+	end
 end
+
 
 return autocmd
