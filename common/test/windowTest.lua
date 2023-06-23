@@ -3,17 +3,13 @@ local Window=require('window');
 local buf = vim.api.nvim_create_buf(false,true);
 local win = Window.new();
 local win2 = Window.new();
-win:geometry(30,20);
-win:position(10,2);
-win:title('hello');
-win:open(buf);
 win2:geometry(30,20);
 win2:position(10,34);
 win2:open(buf);
 
-r=function()
-	win:refresh({row=8,col=10});
-end
+-- r=function()
+-- 	win:refresh({row=8,col=10});
+-- end
 --win:updateConfig({row=8,col=10});
 -- dt=function(t)
 -- 	--io.write('{');
@@ -34,4 +30,15 @@ end
 
 
 -- win:close(buf);
+
+
+-- build two windows, one is like console, can type information, and focus on that
+win:geometry(30,5);
+win:position(10,2);
+win:title('hello');
+win:open(buf);
+
+
+
+
 return r;

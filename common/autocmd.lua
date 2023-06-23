@@ -1,4 +1,4 @@
--- local debug = require('common.debug')
+local debug = require('common.debugMessagePrinter');debug.enable();
 
 local autocmd = {}
 
@@ -48,6 +48,7 @@ end
 autocmd.emit = function(self,event)
 	self.events[event] = self.events[event] or {}
 	for _, callback in ipairs(self.events[event]) do
+		debug.d("calling emit callback");
 		callback()
 	end
 end

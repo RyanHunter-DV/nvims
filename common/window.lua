@@ -8,8 +8,12 @@ window.new=function(self)
 end
 
 window.initialize=function(self)
+	self.callbacks={
+		before={},
+		after ={}
+	};
 	self.style={
-		relative = 'win',style='minimal',
+		relative = 'cursor',style='minimal',
 		-- anchor='',
 		row=-1,col=-1,
 		width=-1,height=-1,
@@ -26,6 +30,24 @@ window.initialize=function(self)
 	self.scrollable=false;
 	self.buffer=nil;
 	self.win=nil;
+end
+window.registerCallback=function(self,cb,event)
+	if event~='after' and event~='before' then
+		return;
+	end
+	-- if not has_key(self.callbacks,event) then
+	-- 	self.callbacks[event]={};
+	-- end
+	table.insert(self.callbacks[event],cb);
+end
+window.focus=function(self,v)
+	v=(v==nil and true) or v;
+	self.style['focusable']=v;
+	local cb=function(win)
+		print("set current win cb called");
+		vim.api.nvim_set_current_win(win);
+	end
+	self:registerCallback(cb,'after');
 end
 window.title=function(self,t,pos)
 	pos = (pos==nil and 'center') or pos;
@@ -47,6 +69,9 @@ window.open=function(self,buf)
 	for k,v in pairs(self.options) do
 		-- print(string.format("%s -> %s",k,v));
 		vim.api.nvim_win_set_option(self.win,k,v);
+	end
+	for _,cb in ipairs(self.callbacks['after']) do
+		cb(self.win);
 	end
 end
 
