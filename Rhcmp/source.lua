@@ -6,6 +6,7 @@ local debug=require('common.debugMessagePrinter');debug.enable();
 local api = vim.api;
 local syntax={};
 local source={};
+local Catched=require('Rhcmp.catched');
 
 
 source.new=function(self)
@@ -21,7 +22,7 @@ end
 source.loadSyntax= function(self)
 	ft = source.filetype();
 	debug.d(string.format("filetype is : %s",ft));
-	-- TODO syntax= require(string.format('Rhcmp.syntax.%s',ft));
+	syntax= require(string.format('Rhcmp.syntax.%s',ft));
 end
 source.loadSnippets = function(self)
 	ft = source.filetype();
@@ -32,8 +33,15 @@ end
 -- search the completions and snippets that matches the given context.
 -- and return a table object that contains all catched sources.
 source.research=function(self,context)
-	debug.d("research not ready");
-	return nil; -- TODO
+	-- debug.d("research not ready");
+	debug.d(string.format("line before cursor:%s",context:lineBeforeCursor()));
+	local pattern = vim.regex(string.format("^%s",context:lineBeforeCursor()));
+	local catch = Catched.new();
+	catch:addCompletions(syntax.searchBuiltins(pattern),'syntax');
+	-- catch:addCompletions(syntax.searchLocalBuffer(pattern));
+	-- catch:addSnippets(xxx);
+	return catch;
+	-- return nil; -- TODO
 end
 
 -- this been called by the Rhcmp.core when user setup this plugin, in source, which

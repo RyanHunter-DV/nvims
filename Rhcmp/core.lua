@@ -25,9 +25,10 @@ core.uiOperation=function(self,configs)
 end
 
 core.whenTextChanged=function(self)
-	debug.d(string.format("text changed, current context: %s",context:lineBeforeCursor()));
+	-- debug.d(string.format("text changed, current context: %s",context:lineBeforeCursor()));
 	local changed,ctx = context:isChanged();
-	if changed==true then
+	if changed==true and ctx~='' then
+		debug.d(string.format("context changed, now is:%s",ctx));
 		context:update(ctx);
 		catches = source:research(context);
 		window:render(catches,function()
