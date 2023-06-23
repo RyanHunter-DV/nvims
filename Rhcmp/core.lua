@@ -12,9 +12,15 @@ local context= Context.new();
 local keymap = Keymap.new();
 local window = Window.new();
 
+local status = {};
+status.IDLE     = 0;
+status.COMPLETED= 1;
+status.CANCELED = 2;
+status.ACTIVE   = 3;
+
 core.new=function(self)
 	local self=setmetatable({},{__index=core});
-	debug.d('core initialized');
+	self.status = status.IDLE;
 	return self;
 end
 
@@ -30,23 +36,43 @@ core.whenTextChanged=function(self)
 	if changed==true and ctx~='' then
 		debug.d(string.format("context changed, now is:%s",ctx));
 		context:update(ctx);
-		catches = source:research(context);
+		catches = source:search(context);
 		if catches:empty()==true then
 			debug.d(string.format("ctx: %s, catches are empty",ctx));
-			window:close();keymap:reset();
+			self:clearStatus();
+			-- window:close();keymap:reset();
 		else
 			debug.d(string.format("ctx: %s, catches are not empty",ctx));
 			window:render(catches,function()
+				self.status=status.ACTIVE;
 				keymap:completionMapping(window);
 			end);
 		end
 	elseif (ctx=='') then
-		window:close();keymap:reset();
+		self:clearStatus();
+		-- window:close();keymap:reset();
 	end
 end
+core.clearStatus=function(self)
+	if (self.status~=status.COMPLETED and self.status~=status.IDLE) then
+		context:reset();
+		window:close();keymap:reset();
+	end
+	self.status=status.IDLE;
+end
 core.whenLeaveInsert=function(self)
-	context:reset();
-	window:close();keymap:reset();
+	self:clearStatus();
+end
+core.chooseItem=function(self,t)
+	window:chooseItem(t);
+	keymap:reset();
+	self.status=status.COMPLETED;
+end
+core.selectNextItem=function(self,t)
+	window:selectNextItem(t);
+end
+core.selectPrevItem=function(self,t)
+	window:selectPrevItem(t);
 end
 
 core.setup=function(self,configs)

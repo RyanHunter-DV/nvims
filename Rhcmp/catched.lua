@@ -5,7 +5,12 @@ catched.new=function(self)
 	local self=setmetatable({},{__index=catched});
 	self.completions={};
 	self.snippets={};
+	self.pattern='';
 	return self;
+end
+
+catched.setPattern=function(self,c)
+	self.pattern=c;
 end
 
 -- add matched completion items into local table

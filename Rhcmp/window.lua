@@ -1,5 +1,6 @@
 local window={};
 local debug=require('common.debugMessagePrinter');
+local keymap=require('Rhcmp.keymap');
 
 window.new=function(self)
 	local self=setmetatable({},{__index=window});
@@ -14,15 +15,23 @@ window.new=function(self)
 		width =1,height=1,
 		border='rounded',
 	};
+	self.context={completion={},snippet={}};
 	self.cursorline = {completion=1,snippet=1};
 	self.itemnums = {completion=0,snippet=0};
+	self.pattern = {completion='',snippet=''};
 	self:reset('completion');
 	return self;
 end
 window.reset=function(self,t)
+	self:closeWindow(t);
+	self:resetBuffer(t);
 	self.options[t]= self:initWindowOptions(t);
 	self.itemnums[t]=0;
 	self.cursorline[t]=1;
+	self.context[t]={};
+	self.opened[t]=false;
+	self.winHandles[t]=nil;
+	self.pattern[t]='';
 end
 window.initWindowOptions=function(self,t)
 	local options = {
@@ -48,6 +57,7 @@ window.formatCatches=function(self,catches)
 	local items={};
 	local maxlen=0;
 	for c,_ in pairs(catches.completions) do
+		table.insert(self.context['completion'],c);
 		if maxlen < string.len(c) then
 			maxlen=string.len(c);
 		end
@@ -64,6 +74,8 @@ window.formatCatches=function(self,catches)
 	return items;
 end
 window.draw=function(self,catches)
+	self.pattern.completion=catches.pattern;
+	debug.d(string.format("pattern in catch: %s",catches.pattern));
 	local formatted = self:formatCatches(catches);
 	self:drawCompletionWindow(formatted);
 	-- highlights
@@ -102,6 +114,7 @@ window.selectNextItem=function(self,t)
 	end
 	vim.api.nvim_win_set_cursor(self.winHandles[t],{nextIndex,0});
 	self.cursorline[t] = nextIndex;
+	vim.cmd[[redraw!]]
 end
 window.selectPrevItem=function(self,t)
 	local prevIndex = self.cursorline[t] - 1;
@@ -110,12 +123,27 @@ window.selectPrevItem=function(self,t)
 	end
 	vim.api.nvim_win_set_cursor(self.winHandles[t],{prevIndex,0});
 	self.cursorline[t] = prevIndex;
+	vim.cmd[[redraw!]]
+end
+window.chooseItem=function(self,t)
+	local t='completion';
+	debug.d(string.format("current select index: %d",self.cursorline[t]));
+	debug.d(string.format("current select type: %s",t));
+	local selIndex = self.cursorline[t];
+	local selected = self.context[t][selIndex];
+	debug.d(string.format("pattern: %s",self.pattern[t]));
+	debug.d(string.format("selected: %s",selected));
+	local replace = keymap.backspace(self.pattern[t])..selected;
+	vim.api.nvim_feedkeys(replace,'i',true);
+	debug.d("call to reset window");
+	self:reset(t);
 end
 
 window.redraw=function(self,catches)
 	local win = self.winHandles['completion'];
-	vim.api.nvim_win_hide(win);
-	self.winHandles['completion']=nil;
+	-- vim.api.nvim_win_hide(win);
+	self:reset('completion');
+	-- self.winHandles['completion']=nil;
 	self:draw(catches);
 end
 window.getBuffer=function(self,t)
@@ -147,15 +175,27 @@ window.closeWindowOptions=function(self,t)
 	self.options[t]=self:initWindowOptions(t);
 	self.cursorline[t] = 1;
 end
-window.closeCompletionWindow=function(self)
-	if self.opened.completion then
-		self.opened.completion=false;
-		vim.api.nvim_win_hide(self.winHandles['completion']);
-		vim.api.nvim_buf_delete(self.buffers['completion'],{force=true});
-		self.winHandles['completion']=nil;
-		self.buffers['completion']=nil;
+window.resetBuffer=function(self,t)
+	if self.opened[t]==true then
+		vim.api.nvim_buf_delete(self.buffers[t],{force=true});
+		self.buffers[t]=nil;
 	end
-	self:reset('completion');
+end
+window.closeWindow=function(self,t)
+	if self.opened[t]==true then
+		vim.api.nvim_win_hide(self.winHandles[t]);
+		self.winHandles[t]=nil;
+	end
+end
+window.closeCompletionWindow=function(self)
+	-- if self.opened.completion then
+	-- 	-- self.opened.completion=false;
+	-- 	self:closeWindow('completion');
+	-- 	self:resetBuffer('completion');
+	-- end
+	if self.opened.completion==true then
+		self:reset('completion');
+	end
 	return;
 end
 

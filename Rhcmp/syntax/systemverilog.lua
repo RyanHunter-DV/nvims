@@ -17,11 +17,13 @@ local matches = {
 	'int unsigned'
 }
 
-syntax.searchBuiltins=function(pattern)
+-- use context to check if the context equals the keywords, if equal, then do not
+-- place it as part of the completion table
+syntax.searchBuiltins=function(pattern,context)
 	local completions={};
 	for _,word in ipairs(keywords) do
 		local s,e = pattern:match_str(word);
-		if s and e then
+		if (s and e) and (word~=context) then
 			-- push current keyword to completions
 			table.insert(completions,word)
 			debug.d(string.format("keyword: %s matched",word));
