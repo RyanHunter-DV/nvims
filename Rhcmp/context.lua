@@ -5,10 +5,13 @@ local debug=require('common.debugMessagePrinter');debug.enable();
 context.new=function(self)
 	local self=setmetatable({},{__index=context});
 
-	self.lineContext='';
-	self.changed=false;
+	self:initialize();
 
 	return self;
+end
+context.initialize=function(self)
+	self.lineContext='';
+	self.changed=false;
 end
 
 context.update=function(self,ctx)
@@ -36,6 +39,9 @@ end
 context.lineBeforeCursor=function(self)
 	local row,col = utils.getCurrentCursorPosition();
 	return string.sub(self.lineContext,1,col+1);
+end
+context.reset=function(self)
+	self:initialize();
 end
 
 

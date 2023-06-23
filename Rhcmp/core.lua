@@ -31,12 +31,23 @@ core.whenTextChanged=function(self)
 		debug.d(string.format("context changed, now is:%s",ctx));
 		context:update(ctx);
 		catches = source:research(context);
-		window:render(catches,function()
-			keymap:completionMapping();
-		end);
+		if catches:empty()==true then
+			debug.d(string.format("ctx: %s, catches are empty",ctx));
+			window:close();keymap:reset();
+		else
+			debug.d(string.format("ctx: %s, catches are not empty",ctx));
+			window:render(catches,function()
+				keymap:completionMapping(window);
+			end);
+		end
+	elseif (ctx=='') then
+		window:close();keymap:reset();
 	end
 end
-
+core.whenLeaveInsert=function(self)
+	context:reset();
+	window:close();keymap:reset();
+end
 
 core.setup=function(self,configs)
 	debug.d("call uiOperation");
@@ -44,10 +55,17 @@ core.setup=function(self,configs)
 	debug.d("call setupGenericAutoCmd");
 	-- core.autocmd:setupGenericAutoCmd(core);
 	local textChangeAction=function()
-		debug.d("textChangedAction called");
+		-- debug.d("textChangedAction called");
 		self:whenTextChanged();
 	end
-	am:setupTextChangedAutoCmd(textChangeAction);
+	local insertLeaveAction=function()
+		self:whenLeaveInsert();
+	end
+
+	-- setup autocmds
+	am:setup({'TextChangedI','TextChangedP'},textChangeAction);
+	am:setup({'InsertLeave'},insertLeaveAction);
+
 	source:setup(); -- preloads grammers and snippets first time it been called
 end
 core.start=function(self)

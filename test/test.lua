@@ -17,6 +17,7 @@ w.setupCompletionWindow();
 c.setup(w);
 t={
 	textinfo='souruce0',
-	textinfo1='source1'
+	textinfo1='source1',
+	virtual='source1',
 };
 c.fillSources('suggestion',t);

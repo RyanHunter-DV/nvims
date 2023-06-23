@@ -33,10 +33,10 @@ end
 -- search the completions and snippets that matches the given context.
 -- and return a table object that contains all catched sources.
 source.research=function(self,context)
-	-- debug.d("research not ready");
+	--self:clear();
 	debug.d(string.format("line before cursor:%s",context:lineBeforeCursor()));
-	local pattern = vim.regex(string.format("^%s",context:lineBeforeCursor()));
 	local catch = Catched.new();
+	local pattern = vim.regex(string.format("^%s",context:lineBeforeCursor()));
 	catch:addCompletions(syntax.searchBuiltins(pattern),'syntax');
 	-- catch:addCompletions(syntax.searchLocalBuffer(pattern));
 	-- catch:addSnippets(xxx);

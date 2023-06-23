@@ -8,8 +8,11 @@ am.new=function(self)
 	return self;
 end
 
-am.setupTextChangedAutoCmd= function(self,action)
-	self.au:subscribe({'TextChangedI','TextChangedP'},action);
+am.setup=function(self,events,action)
+	self.au:subscribe(events,action);
 end
+--am.setupTextChangedAutoCmd= function(self,action)
+--	self.au:subscribe({'TextChangedI','TextChangedP'},action);
+--end
 
 return am;
