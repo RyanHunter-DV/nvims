@@ -34,11 +34,15 @@ end
 -- and return a table object that contains all catched sources.
 source.search=function(self,context)
 	--self:clear();
-	debug.d(string.format("line before cursor:%s",context:lineBeforeCursor()));
-	local pattern = vim.regex(string.format("^%s",context:lineBeforeCursor()));
 	local catch = Catched.new();
+	if context:lastChar()==' ' then
+		return catch;
+	end
+	debug.d(string.format("line before cursor:%s",context:lineBeforeCursor()));
 	catch:setPattern(context:lineBeforeCursor());
-	catch:addCompletions(syntax.searchBuiltins(pattern,catch.pattern),'syntax');
+	local pattern = vim.regex(string.format("%s",catch.pattern.word));
+	debug.d(string.format("pattern string: %s",catch.pattern.word));
+	catch:addCompletions(syntax.searchBuiltins(pattern,catch.pattern.word),'syntax');
 	-- catch:addCompletions(syntax.searchLocalBuffer(pattern));
 	-- catch:addSnippets(xxx);
 	return catch;

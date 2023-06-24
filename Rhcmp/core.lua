@@ -76,9 +76,9 @@ core.selectPrevItem=function(self,t)
 end
 
 core.setup=function(self,configs)
-	debug.d("call uiOperation");
+	-- debug.d("call uiOperation");
 	self:uiOperation(configs);
-	debug.d("call setupGenericAutoCmd");
+	-- debug.d("call setupGenericAutoCmd");
 	-- core.autocmd:setupGenericAutoCmd(core);
 	local textChangeAction=function()
 		-- debug.d("textChangedAction called");

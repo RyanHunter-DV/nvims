@@ -44,5 +44,10 @@ context.reset=function(self)
 	self:initialize();
 end
 
+-- return last char
+context.lastChar=function(self)
+	local row,col = utils.getCurrentCursorPosition();
+	return string.sub(self.lineContext,col,col);
+end
 
 return context;
