@@ -11,13 +11,17 @@ print("test starts")
 
 -- require('auc.init')
 -- require('sv.init')
-w = require('Rhcmp.window')
-c = require('Rhcmp.context')
-w.setupCompletionWindow();
-c.setup(w);
-t={
-	textinfo='souruce0',
-	textinfo1='source1',
-	virtual='source1',
-};
-c.fillSources('suggestion',t);
+-- w = require('Rhcmp.window')
+-- c = require('Rhcmp.context')
+-- w.setupCompletionWindow();
+-- c.setup(w);
+-- t={
+-- 	textinfo='souruce0',
+-- 	textinfo1='source1',
+-- 	virtual='source1',
+-- };
+-- c.fillSources('suggestion',t);
+
+-- print(string.byte(''));
+print(string.format("%s",238));
+

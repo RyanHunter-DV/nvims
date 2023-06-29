@@ -21,7 +21,7 @@ local cmp = require'cmp'
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
 	formatting = {
 		fields = {'kind','abbr','menu'},
@@ -33,8 +33,8 @@ local cmp = require'cmp'
 				buffer      = '[Buffer]',
 				luasnip     = '[Snippet]',
 				spell       = '[Spell]',
-				path        = '[Path]',
-				cmdline     = '[Cmdline]',
+				-- path        = '[Path]',
+				-- cmdline     = '[Cmdline]',
 			})[entry.source.name]
 			return vim_item
 		end
@@ -45,8 +45,8 @@ local cmp = require'cmp'
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'ultisnips' }, -- For ultisnips users.
       { name = 'snippy' }, -- For snippy users.
-      { name = 'path' },
-      { name = 'cmdline' },
+      -- { name = 'path' },
+      -- { name = 'cmdline' },
       { name = 'spell' },
       -- too memory usage, { name = 'cmp_tabnine' },
     }, {
