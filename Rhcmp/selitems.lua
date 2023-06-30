@@ -18,7 +18,7 @@ function S:new(ctx)
 	self.max={word=0};
 	self.prefix='- ';
 	-- 0-based
-	self.selindex=0;
+	self.selindex=1;
 	-- items[word]={Syntax={'xxx','xxx'},Buffer={'xxx','xx'}}
 	self.items={word={}};
 	return self;
@@ -133,26 +133,29 @@ end
 -- increment the selection index
 function S:incSelIndex()
 	local t='word';
-	self.selindex = self.selindex + 1;
-	if self.selindex > s:size(t) then
-		self.selindex=0;
+	if self.selindex >= self:size(t) then
+		self.selindex=1;
+	else
+		self.selindex = self.selindex + 1;
 	end
+	return self.selindex;
 end
 
 -- decreate the selection index
 function S:decSelIndex()
 	local t='word';
 	if self.selindex <= 1 then
-		self.selindex = s:size(t)-1;
+		self.selindex = self:size(t);
 	else
 		self.selindex = self.selindex - 1;
 	end
+	return self.selindex;
 end
 
 -- return the selitem of the current selIndex 
 function S:getSelectedItem()
 	local ct='word';
-	return self.items[ct][self.selindex+1].content;
+	return self.items[ct][self.selindex].content;
 end
 
 -- return the pattern

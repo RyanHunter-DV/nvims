@@ -19,6 +19,7 @@ function H:textChange(winh,ct,s)
 		self:setMark(self.spaces[3],winh.buffers[ct],pos.prefixS,pos.prefixE);
 		self.buffer = winh.buffers[ct];
 		vim.api.nvim_win_set_hl_ns(winh.wins.word,self.nsid);
+		-- api.setWinOptions(winh.wins.word,winh.winOptions.word);
 
 		index = index+1;
 	end
@@ -72,12 +73,15 @@ end
 function H:new()
 	local self=setmetatable({},{__index=H});
 	self.nsid = api.createNamespace();
-	self.spaces={'RhcmpContext','RhcmpTag','RhcmpPrefix'};
+	self.spaces={'RhcmpContext','RhcmpTag','RhcmpPrefix','FloatBorder','CursorLine'};
 	self.scheme = {
 		RhcmpContext = {fg='#afd700'},
 		RhcmpTag     = {fg='#cba6f0'},
 		RhcmpPrefix  = {fg='#afd700'},
+		FloatBorder  = {fg='#3e4556'},
+		CursorLine   = {fg='#1b2229',bg='#61afef'}
 	}
+	-- winhighlight='Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
 	self.markid=1;
 	self.buffer=nil;
 	self:sethl();

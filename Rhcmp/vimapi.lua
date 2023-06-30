@@ -60,6 +60,9 @@ api.closeWindow=function(winh)
 		vi.nvim_win_hide(winh);
 	end
 end
+api.setCursor=function(winh,sel)
+	vim.api.nvim_win_set_cursor(winh,{sel,0});
+end
 
 
 

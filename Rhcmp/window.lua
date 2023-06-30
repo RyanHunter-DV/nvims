@@ -18,17 +18,20 @@ function Window:setupDefaultConfigs()
 	self.winConfigs={word={}};
 	self.winOptions={word={}};
 	local wordWindowConfig={
-		relative='editor',
+		relative='cursor',
 		row=1,col=0,
 		width =1,height=1,
 		border='rounded',
 		-- scrollable=true
 	}
 	self.winConfigs.word = wordWindowConfig;
-	local wordWindowOption={
+	self.winOptions.word={
+		winhighlight='Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+		wrap=false,
+		scrolloff=0,
+		sidescrolloff=0,
 		number=false,
 	}
-	self.winOptions.word=wordWindowOption;
 	return;
 end
 
@@ -83,8 +86,8 @@ function Window:updateWindowConfigs(ct)
 	local srow,scol = self.selitems:patternPosition('start');
 	self.winConfigs[ct].height=h;
 	self.winConfigs[ct].width=w;
-	self.winConfigs[ct].row=srow;
-	self.winConfigs[ct].col=scol;
+	-- self.winConfigs[ct].row=srow;
+	-- self.winConfigs[ct].col=scol;
 end
 
 -- to create a new window for ct, both a buffer by given self.winConfigs
@@ -116,13 +119,15 @@ function Window:selectNextItem()
 	-- update selindex and return the updated value.
 	local ct='word';
 	local selindex = self.selitems:incSelIndex();
-	api.setCursor(self.wins[ct],{selindex,0});
+	debug.d(string.format("inc index to:%d",selindex));
+	api.setCursor(self.wins[ct],selindex);
 	vim.cmd[[redraw]]; -- ?, not sure it's affection.
 end
 function Window:selectPrevItem()
 	local ct='word';
 	local selindex = self.selitems:decSelIndex();
-	api.setCursor(self.wins[ct],{selindex,0});
+	debug.d(string.format("dec index to:%d",selindex));
+	api.setCursor(self.wins[ct],selindex);
 	vim.cmd[[redraw]];
 end
 -- TODO, function Window:chooseItem()
