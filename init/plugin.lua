@@ -50,7 +50,7 @@ return require('packer').startup({function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
   -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Post-install/update hook with call of vimscript function with argument
   use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
@@ -84,13 +84,13 @@ return require('packer').startup({function(use)
 	use "saadparwaiz1/cmp_luasnip"
 	use "rafamadriz/friendly-snippets"
 	use "L3MON4D3/LuaSnip"
-	use "f3fora/cmp-spell"
+	-- use "f3fora/cmp-spell"
 	-- to memory usage, use {
 	-- to memory usage, 	"tzachar/cmp-tabnine",
 	-- to memory usage, 	after = "nvim-cmp",
 	-- to memory usage, 	run = "bash ./install.sh"
 	-- to memory usage, }
-	use {'neovim/nvim-lspconfig','williamboman/nvim-lsp-installer'}
+	-- use {'neovim/nvim-lspconfig','williamboman/nvim-lsp-installer'}
 	-- use {
 	-- 	'autozimu/LanguageClient-neovim',
 	-- 	run = 'bash ./install.sh'
@@ -98,11 +98,11 @@ return require('packer').startup({function(use)
 
 	-- @RyanH, add nord theme
 	use 'shaunsingh/nord.nvim'
-	use 'glepnir/zephyr-nvim'
+	-- use 'glepnir/zephyr-nvim'
 
 	-- @RyanH, add nvim-tree
 	-- TODO
-	use {'kyazdani42/nvim-tree.lua',requires = 'kyazdani42/nvim-web-devicons'}
+	-- use {'kyazdani42/nvim-tree.lua',requires = 'kyazdani42/nvim-web-devicons'}
 	-- @RyanH,bufferline
 	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
@@ -115,10 +115,10 @@ return require('packer').startup({function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
-	use({
-		"aserowy/tmux.nvim",
-		config = function() require("tmux").setup() end
-	})
+	-- use({
+	-- 	"aserowy/tmux.nvim",
+	-- 	config = function() require("tmux").setup() end
+	-- })
 end,
 config = {
 	git = {
