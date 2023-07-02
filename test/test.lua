@@ -23,5 +23,16 @@ print("test starts")
 -- c.fillSources('suggestion',t);
 
 -- print(string.byte(''));
-print(string.format("%s",238));
+--print(string.format("%s",238));
 
+--vim.api.nvim_buf_set_option(0,'mouse'='n');
+-- local t = vim.api.nvim_get_all_options_info();
+-- local ls={};
+-- for k,v in pairs(t['mouse']) do
+-- 	table.insert(ls,string.format("%s->%s",k,v));
+-- end
+-- vim.api.nvim_buf_set_lines(0,1,-1,false,ls);
+
+-- vim.api.nvim_buf_set_option(0,'mouse','n');
+
+vim.api.nvim_set_option('mouse','');

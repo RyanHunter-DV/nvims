@@ -45,7 +45,7 @@ local cmp = require'cmp'
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'ultisnips' }, -- For ultisnips users.
       { name = 'snippy' }, -- For snippy users.
-      -- { name = 'path' },
+      { name = 'path' },
       -- { name = 'cmdline' },
       { name = 'spell' },
       -- too memory usage, { name = 'cmp_tabnine' },
@@ -66,16 +66,15 @@ local cmp = require'cmp'
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' }
-    }
+    sources = {{ name = 'buffer' },{ name = 'path' }}
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
+	--sources = cmp.config.sources({{name='cmdline'},{name='path'}})
     sources = cmp.config.sources({
-      { name = 'path' }
+      --{ name = 'path' }
     }, {
       { name = 'cmdline' }
     })
