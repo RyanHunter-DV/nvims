@@ -1,4 +1,4 @@
-vim.api.nvim_set_option('completeopt','menu,menuone,noselect')
+vim.api.nvim_set_option('completeopt','menu,menuone')
 local cmp = require'cmp'
   cmp.setup({
     snippet = {
