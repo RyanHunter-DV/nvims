@@ -1,2 +1,2 @@
-vim.cmd([[ colorschem nord ]])
---vim.cmd([[ colorschem zephyr ]])
+-- vim.cmd([[ colorschem nord ]])
+vim.cmd([[ colorschem zephyr ]])

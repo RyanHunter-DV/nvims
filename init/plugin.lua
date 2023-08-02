@@ -98,7 +98,7 @@ return require('packer').startup({function(use)
 
 	-- @RyanH, add nord theme
 	use 'shaunsingh/nord.nvim'
-	-- use 'glepnir/zephyr-nvim'
+	use 'glepnir/zephyr-nvim'
 
 	-- @RyanH, add nvim-tree
 	-- TODO

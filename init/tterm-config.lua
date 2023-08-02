@@ -1,6 +1,13 @@
 
 require("toggleterm").setup{
-	direction= float
+	direction   = 'horizontal',
+	open_mapping= [[<c-t>]],
+	on_open = function()
+		vim.cmd('set mouse=n');
+	end,
+	on_close = function()
+		vim.cmd('set mouse=');
+	end
 }
 -- set
 vim.cmd([[au TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR> ]])
@@ -11,5 +18,5 @@ vim.cmd([[au TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:co
 -- For example: 2<C-t> will open terminal 2
 --nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 --inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-vim.keymap.set('n', '<c-t>', "<Cmd>exe v:count1 . 'ToggleTerm direction=float'<CR>", {noremap=true,silent=true})
-vim.keymap.set('i', '<c-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>', {noremap=true,silent=true})
+--vim.keymap.set('n', '<c-t>', "<Cmd>exe v:count1 . 'ToggleTerm direction=float'<CR>", {noremap=true,silent=true})
+--vim.keymap.set('i', '<c-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>', {noremap=true,silent=true})
