@@ -1,4 +1,6 @@
 {
   "accentColor": "",
-  "cssTheme": "Minimal"
+  "cssTheme": "Minimal",
+  "textFontFamily": "JetBrains Mono",
+  "monospaceFontFamily": "JetBrains Mono"
 }

@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"d5f4b3d3c300ad99","x":-700,"y":-360,"width":365,"height":105,"type":"text","text":"user.lua -> require('RhDsl.core').setup(\n{...}\n)"},
+		{"id":"59e21a8d21156d85","x":-335,"y":-160,"width":355,"height":240,"type":"text","text":"local core={}\nfunction setup()\n1. read and process config\n2. setup auto cmds\nend\nreturn core"},
+		{"id":"3763493be9723ba6","x":180,"y":-160,"width":300,"height":240,"type":"text","text":"au whenCursorChanged\n2. get current word\n3. if not nil, render all matched words\n4. "},
+		{"id":"fbf05d48142a6921","x":797,"y":-300,"width":323,"height":140,"type":"text","text":"Highlighter\n1. reset previous highlight if exists"},
+		{"id":"3799dc5ed4b0fbf8","x":797,"y":-100,"width":323,"height":120,"type":"text","text":"Context"},
+		{"type":"text","text":"Context","id":"6c39df859908863e","x":797,"y":40,"width":323,"height":120}
+	],
+	"edges":[
+		{"id":"d46a3b826118ff3c","fromNode":"d5f4b3d3c300ad99","fromSide":"bottom","toNode":"59e21a8d21156d85","toSide":"left"},
+		{"id":"56f7bf9f1a9ac8d9","fromNode":"59e21a8d21156d85","fromSide":"right","toNode":"3763493be9723ba6","toSide":"left"},
+		{"id":"b92ab1fb903ef29f","fromNode":"3763493be9723ba6","fromSide":"right","toNode":"fbf05d48142a6921","toSide":"left","label":"hl.clearPreviousHighlight"},
+		{"id":"6971a214aec0072a","fromNode":"3763493be9723ba6","fromSide":"right","toNode":"3799dc5ed4b0fbf8","toSide":"left","label":"context.getCurrentWord"},
+		{"id":"7f61185baae50540","fromNode":"3763493be9723ba6","fromSide":"right","toNode":"6c39df859908863e","toSide":"left","label":"contxt.searchAllWords"}
+	]
+}

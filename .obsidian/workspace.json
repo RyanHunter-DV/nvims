@@ -11,8 +11,15 @@
             "id": "c24feb7a2ce88441",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "canvas",
+              "state": {
+                "file": "RhDsl/doc/Arch.canvas",
+                "viewState": {
+                  "x": 510.57000000000033,
+                  "y": 47.42999999999951,
+                  "zoom": 0
+                }
+              }
             }
           }
         ]
@@ -81,6 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "RhDsl/doc/Arch.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "RhDsl/doc/Arch.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +127,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "RhDsl/doc/Arch.canvas"
+              }
             }
           }
         ]
@@ -139,5 +150,20 @@
     }
   },
   "active": "c24feb7a2ce88441",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "tools/readme",
+    "tools/neovide.tar.gz",
+    "tools",
+    "RhDsl/Context.lua",
+    "RhDsl/Highlighter.lua",
+    "RhDsl/AutoCmds.lua",
+    "RhDsl/core.lua",
+    "RhDsl/src/core.lua",
+    "RhDsl/src",
+    "RhDsl/doc/Overview.md",
+    "RhDsl/doc/Arch.canvas",
+    "RhTree/v1/doc/Overview.md",
+    "RhDsl/doc",
+    "RhDsl"
+  ]
 }
