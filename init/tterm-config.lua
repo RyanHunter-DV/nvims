@@ -3,10 +3,14 @@ require("toggleterm").setup{
 	direction   = 'horizontal',
 	open_mapping= [[<c-t>]],
 	on_open = function()
-		vim.cmd('set mouse=n');
+		if vim.g.neovide~=true then
+			vim.cmd('set mouse=n');
+		end
 	end,
 	on_close = function()
-		vim.cmd('set mouse=');
+		if vim.g.neovide~=true then
+			vim.cmd('set mouse=');
+		end
 	end
 }
 -- set

@@ -24,9 +24,13 @@ function AutoCmds:whenCursorMoved()
 end
 
 -- To setup auto commands while this tool is setup.
-function AutoCmds:setupAutCmds(ui)
-	set autocmd CursorMoved.
-	with a callback: self:whenCursorMoved.
+function AutoCmds:setupAutoCmds(ui)
+	vim.api.nvim_create_autocmd(
+		{"CursorMoved"},
+		{callback=function()
+			self:whenCursorMoved()
+		end}
+	);
 end
 
 

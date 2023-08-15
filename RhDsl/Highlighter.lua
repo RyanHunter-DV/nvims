@@ -16,9 +16,11 @@ function Highlighter:clearPreviousHighligh()
 	return;
 end
 
--- according all matched words and positions in ctx object, render those by ext marks
--- TODO
 function Highlighter:highlightAllMatchedWords(ctx)
+	-- according all matched words and positions
+	-- in ctx object, render those by ext marks, with pre-defined
+	-- extmark and highlight.
+	-- TODO
 end
 
 

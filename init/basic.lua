@@ -7,7 +7,11 @@ vim.o.hlsearch    = true
 vim.o.cindent     = true
 
 vim.cmd ([[ set foldmethod=marker ]])
-vim.cmd ([[ set mouse= ]])
+if vim.g.neovide==true then
+	vim.cmd ([[ set mouse=na ]])
+else
+	vim.cmd ([[ set mouse= ]])
+end
 vim.cmd ([[ set foldmarker=##{{{,##}}} ]])
 vim.cmd ([[au BufRead,BufNewFile *.rh set filetype=ruby]])
 vim.cmd ([[au FileType ruby setlocal shiftwidth=4 ]])
