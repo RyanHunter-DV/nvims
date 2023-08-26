@@ -19,7 +19,8 @@ end
 
 ls.add_snippets("ruby", {
 	s("def", {
-		t({"def "}),i(1,"<DefName(args)>"),t({" ##{{{"}),
+		t({"## "}),i(1,"<DefName(args)>"),t({", "}),i(2,"description"),
+		t({"","def "}),f(copy,1),t({" ##{{{"}),
 		t({"","\t"}),i(0),
 		t({"","end ##}}}"}),
 	}),
