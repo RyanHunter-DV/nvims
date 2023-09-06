@@ -22,7 +22,7 @@ ls.add_snippets("ruby", {
 		t({"## "}),i(1,"<DefName(args)>"),t({", "}),i(2,"description"),
 		t({"","def "}),f(copy,1),t({" ##{{{"}),
 		t({"","\t"}),i(0),
-		t({"","\tputs \"method("}),f(copy,1),t({") not ready yet.\""}),
+		t({"","\tputs \"#{__FILE__}:"}),f(copy,1),t({" not ready yet.\""}),
 		t({"","end ##}}}"}),
 	}),
 	s("class", {
