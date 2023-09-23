@@ -40,7 +40,7 @@ local cmp = require'cmp'
 		end
 	},
     sources = cmp.config.sources({
-      { name = 'lsp' },
+      -- { name = 'lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
       { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.

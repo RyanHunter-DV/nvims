@@ -12,6 +12,7 @@ if vim.g.neovide==true then
 else
 	vim.cmd ([[ set mouse= ]])
 end
+vim.cmd ([[ set nowrap ]])
 vim.cmd ([[ set foldmarker=##{{{,##}}} ]])
 vim.cmd ([[au BufRead,BufNewFile *.rh set filetype=ruby]])
 vim.cmd ([[au FileType ruby setlocal shiftwidth=4 ]])

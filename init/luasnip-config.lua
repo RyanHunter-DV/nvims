@@ -27,6 +27,6 @@ vim.keymap.set('s', '<c-k>', "<cmd>lua require('luasnip').jump(-1)<Cr>", {norema
 
 require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippets
 require("luasnip.loaders.from_vscode").load({  -- load custom code snip
-	paths = {vim.fn.stdpath("config").."/mysnips"}
+	paths = {HomePath.."/snippets"}
 })
-require('snippets.init')
+-- require('snippets.init')
