@@ -3,15 +3,15 @@ require("toggleterm").setup{
 	direction   = 'horizontal',
 	open_mapping= [[<c-t>]],
 	on_open = function()
-		if vim.g.neovide~=true then
-			vim.cmd('set mouse=n');
-		end
+		vim.cmd('set mouse=n');
 	end,
 	on_close = function()
-		if vim.g.neovide~=true then
-			vim.cmd('set mouse=');
-		end
-	end
+		vim.cmd('set mouse=');
+	end,
+	float_opts = {
+		width = vim.o.columns-3,
+		height= vim.o.lines-3
+	}
 }
 -- set
 vim.cmd([[au TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR> ]])
@@ -24,3 +24,4 @@ vim.cmd([[au TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:co
 --inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 --vim.keymap.set('n', '<c-t>', "<Cmd>exe v:count1 . 'ToggleTerm direction=float'<CR>", {noremap=true,silent=true})
 --vim.keymap.set('i', '<c-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>', {noremap=true,silent=true})
+vim.keymap.set('n', 'tt', "<Cmd>exe v:count1 . 'ToggleTerm direction=float'<CR>", {noremap=true,silent=true})
