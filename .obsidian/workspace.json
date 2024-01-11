@@ -4,22 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "24db6e2c3e323694",
+        "id": "4846c8008f00980d",
         "type": "tabs",
         "children": [
           {
-            "id": "c24feb7a2ce88441",
+            "id": "232dd9e764220982",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "RhDsl/doc/Arch.canvas",
-                "viewState": {
-                  "x": 510.57000000000033,
-                  "y": 47.42999999999951,
-                  "zoom": 0
-                }
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -88,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "RhDsl/doc/Arch.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "RhDsl/doc/Arch.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "RhDsl/doc/Arch.canvas"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,8 +138,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c24feb7a2ce88441",
+  "active": "232dd9e764220982",
   "lastOpenFiles": [
+    "RhDsl/doc/Arch.canvas",
+    "RhDsl/doc/Overview.md",
     "tools/readme",
     "tools/neovide.tar.gz",
     "tools",
@@ -160,10 +151,7 @@
     "RhDsl/core.lua",
     "RhDsl/src/core.lua",
     "RhDsl/src",
-    "RhDsl/doc/Overview.md",
-    "RhDsl/doc/Arch.canvas",
     "RhTree/v1/doc/Overview.md",
-    "RhDsl/doc",
-    "RhDsl"
+    "RhDsl/doc"
   ]
 }
