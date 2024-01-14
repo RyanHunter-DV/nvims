@@ -3,7 +3,7 @@ s.setup=function(home)
 	-- local ls = require('luasnip').setup()
 	local snips_status_ok,luasnip = pcall(require,'luasnip')
 	if not snips_status_ok then
-		vim.vim_notify('luasnip not found')
+		-- vim.vim_notify('luasnip not found')
 		return
 	end
 	-- " press <Tab> to expand or jump in a snippet. These can also be mapped separately
