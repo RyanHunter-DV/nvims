@@ -29,9 +29,11 @@ config.basicVimSettings = function()
 	vim.cmd([[au FileType * setlocal fo-=o ]])
 	vim.cmd([[au FileType * set softtabstop=0 ]])
 	vim.cmd([[au FileType * set noexpandtab ]])
+	vim.cmd([[au FileType * set shiftwidth=4 ]])
 	-- TODO, vim.cmd([[au FileType systemverilog lua require('sv.init') ]])
 	-- TODO, vim.cmd([[au FileType ruby lua require('ruby.init') ]])
 	vim.cmd ([[au BufRead,BufNewFile *.svh set filetype=systemverilog]])
+	vim.cmd ([[set guicursor=n-v-c-a-sm:blinkon200,i-ci-ve:ver25,r-cr-o:hor20]])
 end
 
 config.default = function()
