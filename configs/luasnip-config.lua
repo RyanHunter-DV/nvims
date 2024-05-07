@@ -27,9 +27,10 @@ s.setup=function(home)
 	-- " For changing choices in choiceNodes (not strictly necessary for a basic setup).
 	-- vim.keymap.set('s', '<silent><expr> <C-E>', "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'" , {})
 	
+
 	require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippets
 	require("luasnip.loaders.from_vscode").load({  -- load custom code snip
-		paths = {home.."/snippets"}
+		paths = {home.."/snippets/snippets"}
 	})
 	-- require('snippets.init')
 end

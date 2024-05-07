@@ -5,7 +5,9 @@ s.setup=function(home)
 	package.path=package.path..string.format(";%s/plugins/cmp-buffer/lua/?.lua",home);
 	package.path=package.path..string.format(";%s/plugins/cmp-cmdline/lua/?.lua",home);
 	package.path=package.path..string.format(";%s/plugins/cmp-path/lua/?.lua",home);
-	vim.api.nvim_set_option('completeopt','menu,menuone')
+	package.path=package.path..string.format(";%s/plugins/cmp_luasnip/lua/?.lua",home);
+	vim.api.nvim_set_option('completeopt','menu,menuone');
+	--RH,print(vim.inspect(package.path))
 	local cmp = require'cmp'
 	  cmp.setup({
 	    snippet = {
@@ -49,7 +51,7 @@ s.setup=function(home)
 	    sources = cmp.config.sources({
 	      -- { name = 'lsp' },
 	      -- { name = 'vsnip' }, -- For vsnip users.
-	      { name = 'luasnip' }, -- For luasnip users.
+	      { name = 'luasnip',option = {show_autosnippets=true} }, -- For luasnip users.
 	      -- { name = 'ultisnips' }, -- For ultisnips users.
 	      -- { name = 'snippy' }, -- For snippy users.
 	      { name = 'path' },
