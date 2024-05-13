@@ -1,5 +1,5 @@
-package.path = package.path..';/home/ryanhunter/GitHub/nvims/?.lua'
-print("test starts")
+--package.path = package.path..';/home/ryanhunter/GitHub/nvims/?.lua'
+--print("test starts")
 -- vim.o.completeopt='menu,menuone,noinsert'
 -- local ac = require('common/autocmd')
 -- local onTextChanged = function()
@@ -35,4 +35,7 @@ print("test starts")
 
 -- vim.api.nvim_buf_set_option(0,'mouse','n');
 
-vim.api.nvim_set_option('mouse','');
+--vim.api.nvim_set_option('mouse','');
+--
+
+print(vim.inspect(_G))
