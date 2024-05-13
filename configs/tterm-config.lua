@@ -1,6 +1,6 @@
 local s={};
 s.setup = function(home)
-	package.path=package.path..string.format(";%s/plugins/tterm/lua/?.lua",home);
+	-- package.path=package.path..string.format(";%s/plugins/tterm/lua/?.lua",home);
 	require("toggleterm").setup{
 		direction   = 'horizontal',
 		open_mapping= [[<c-t>]],

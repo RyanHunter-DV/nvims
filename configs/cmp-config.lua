@@ -1,14 +1,15 @@
 local s={};
 
 s.setup=function(home)
-	package.path=package.path..string.format(";%s/plugins/nvim-cmp/lua/?.lua",home);
-	package.path=package.path..string.format(";%s/plugins/cmp-buffer/lua/?.lua",home);
-	package.path=package.path..string.format(";%s/plugins/cmp-cmdline/lua/?.lua",home);
-	package.path=package.path..string.format(";%s/plugins/cmp-path/lua/?.lua",home);
-	package.path=package.path..string.format(";%s/plugins/cmp_luasnip/lua/?.lua",home);
-	vim.api.nvim_set_option('completeopt','menu,menuone');
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/nvim-cmp/lua/?/init.lua",home);
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/nvim-cmp/lua/?.lua",home);
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/cmp-buffer/lua/?.lua",home);
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/cmp-cmdline/lua/?.lua",home);
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/cmp-path/lua/?.lua",home);
+	-- if use packer, this can be commented out, package.path=package.path..string.format(";%s/plugins/cmp_luasnip/lua/?.lua",home);
+	-- vim.api.nvim_set_option('completeopt','menu,menuone');
 	--RH,print(vim.inspect(package.path))
-	local cmp = require'cmp'
+	local cmp = require('cmp')
 	  cmp.setup({
 	    snippet = {
 	      -- REQUIRED - you must specify a snippet engine

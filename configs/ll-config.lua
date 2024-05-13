@@ -1,6 +1,6 @@
 local s ={}
 s.setup=function(home)
-	package.path=package.path..string.format(";%s/plugins/lualine/lua/?.lua",home);
+	-- not used for packer mode, package.path=package.path..string.format(";%s/plugins/lualine/lua/?.lua",home);
 	require('lualine').setup {
 	  options = {
 	    icons_enabled = true,

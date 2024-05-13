@@ -1290,6 +1290,12 @@
 		"description": "UVM env class template"
 	},
 
+	"my_test": {
+		"prefix": "my_test",
+		"body": [
+			"this is a test line, ${1:$TM_FILENAME_BASE}"
+		]
+	},
   "uvm_test": {
 		"prefix": "uvm_test",
 		"body": [

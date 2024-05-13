@@ -1,6 +1,9 @@
 local s={};
 s.setup=function(home)
 	package.path=package.path..string.format(";%s/plugins/telescope.nvim/lua/?.lua",home);
+	package.path=package.path..string.format(";%s/plugins/telescope.nvim/lua/?/init.lua",home);
+	package.path=package.path..string.format(";%s/plugins/telescope.nvim/plenary.nvim/lua/?.lua",home);
+	package.path=package.path..string.format(";%s/plugins/telescope.nvim/plenary.nvim/lua/?/init.lua",home);
 
 	local builtin = require('telescope.builtin')
 	

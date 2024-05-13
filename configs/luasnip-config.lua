@@ -28,9 +28,9 @@ s.setup=function(home)
 	-- vim.keymap.set('s', '<silent><expr> <C-E>', "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'" , {})
 	
 
-	require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippets
-	require("luasnip.loaders.from_vscode").load({  -- load custom code snip
-		paths = {home.."/snippets/snippets"}
+	-- require("luasnip.loaders.from_vscode").lazy_load() -- load friendly-snippets
+	require("luasnip.loaders.from_vscode").lazy_load({  -- load custom code snip
+		paths = {home.."/snippets"}
 	})
 	-- require('snippets.init')
 end
