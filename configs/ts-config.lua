@@ -19,6 +19,24 @@ s.setup=function(home)
 	vim.keymap.set('n', '<leader>fg', livegrep,{})
 	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 	vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+	vim.api.nvim_create_user_command('Tsf',
+		function(p)
+			builtin.find_files({cwd=p.args})
+		end,
+		{
+			force=true,
+			nargs='*'
+		}
+	);
+	vim.api.nvim_create_user_command('Tsg',
+		function(p)
+			builtin.live_grep({cwd=p.args})
+		end,
+		{
+			force=true,
+			nargs='*'
+		}
+	);
 	
 	require('telescope').setup{
 	  defaults = {

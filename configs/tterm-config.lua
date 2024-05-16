@@ -5,7 +5,7 @@ s.setup = function(home)
 		direction   = 'horizontal',
 		open_mapping= [[<c-t>]],
 		on_open = function()
-			vim.cmd('set mouse=n');
+			vim.cmd('set mouse=');
 		end,
 		on_close = function()
 			vim.cmd('set mouse=');
