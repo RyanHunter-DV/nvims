@@ -150,6 +150,16 @@
     "body": ["#ifndef ${1:DEBUG}", "$0", "#endif // !$1"],
     "description": "Code snippet for #ifndef"
   },
+  "filehead": {
+  	"prefix": "filehead",
+	"body":[
+		"#ifndef ${1:$TM_FILENAME_BASE}__h",
+		"#define ${1:$TM_FILENAME_BASE}__h",
+		"$0",
+		"#endif"
+	],
+	"description": "filehead macro"
+  },
   "#if": {
     "prefix": "#if",
     "body": ["#if ${1:0}", "$0", "#endif // $1"],
