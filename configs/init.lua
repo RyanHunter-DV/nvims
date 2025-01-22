@@ -31,6 +31,7 @@ config.basicVimSettings = function()
 	-- TODO, vim.cmd([[au FileType systemverilog lua require('sv.init') ]])
 	-- TODO, vim.cmd([[au FileType ruby lua require('ruby.init') ]])
 	vim.cmd ([[au BufRead,BufNewFile *.svh set filetype=systemverilog]])
+	vim.cmd([[au BufRead,BufNewFile *.v,*.vsrc set filetype=verilog]])
 	vim.cmd ([[set guicursor=n-v-c-a-sm:blinkon200,i-ci-ve:ver25,r-cr-o:hor20]])
 end
 
