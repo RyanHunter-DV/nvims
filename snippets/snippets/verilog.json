@@ -97,6 +97,11 @@
     "body": ["initial begin\n\t${0}\nend"],
     "description": "Initial Begin"
   },
+  "Begin": {
+    "prefix": "begin",
+    "body": ["begin\n\t${0}\nend"],
+    "description": "Begin"
+  },
   "typedef struct packed": {
     "prefix": "tdsp",
     "body": ["typedef struct packed {", "\n\tint ${2:data};", "\n${1:name}"],
